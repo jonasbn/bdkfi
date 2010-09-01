@@ -7,7 +7,32 @@ my $build = Module::Build->new(
 	dist_author        => 'Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>',
 	module_name        => 'Business::DK::FI',
 	dist_version_from  => 'lib/Business/DK/FI.pm',
-	license            => '$LICENSE',
-	create_makefile_pl => 'passthrough',
+	dist_abstract      => 'validation of Danish FI numbers',
+	license            => 'artistic',
+	create_makefile_pl => 'traditional',
+	create_readme      => 1,
+	recursive_test_files => 1,
+	requires => {
+	    'Exporter'          => '0', #core
+		'Carp'              => '0', #core
+		'Business::DK::PO'  => '0.02',
+		'Business::DK::CVR' => '0.01',
+		'Date::Calc'        => '0',
+		'Tie::IxHash'       => '0',
+		'Class::InsideOut'  => '0',
+	},
+    meta_merge => {
+        resources => {
+            homepage => 'http://logiclab.jira.com/wiki/display/BDKFI/Home',
+            bugtracker =>
+                'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-FI',
+            repository => 'http://logicLAB.jira.com/svn/BDKFI',
+            ProjectChangelog =>
+                'http://logiclab.jira.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel',
+            ProjectSite => 'http://logicLAB.jira.com/browse/BDKFI',
+            ProjectWiki => 'http://logiclab.jira.com/wiki/display/BDKFI/Home',
+        }
+    },
+
 );
 $build->create_build_script();
