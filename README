@@ -1,4 +1,30 @@
-README file for Business-DK-FI
+NAME
+    Business::DK::FI - validation of Danish FI numbers
 
-$Id$
+SYNOPSIS
+ABSTRACT
+DESCRIPTION
+BUGS
+    Please report issues via CPAN RT:
+
+      http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-FI
+
+    or by sending mail to
+
+      bug-Business-DK-FI@rt.cpan.org
+
+SEE ALSO
+
+
+AUTHOR
+    Jonas B. Nielsen, (jonasbn) - `<jonasbn@cpan.org>'
+
+COPYRIGHT
+    Business-DK-FI is (C) by Jonas B. Nielsen, (jonasbn) 2006
+
+    Business-DK-FI is released under the artistic license
+
+    The distribution is licensed under the Artistic License, as specified by
+    the Artistic file in the standard perl distribution
+    (http://www.perl.com/language/misc/Artistic.html).
 
