@@ -15,10 +15,10 @@ ok(validate('0026840149965328'), 'Ok');
 dies_ok {validate()} 'no arguments';
 
 #Test 4
-dies_ok {validate(12345678901234)} 'too short, 14';
+dies_ok {validate(123456789012345)} 'too short, 15';
 
 #Test 5
-dies_ok {validate(1234567890123456)} 'too long, 16';
+dies_ok {validate(12345678901234567)} 'too long, 17';
 
 #Test 6
 dies_ok {validate('00268401A9965328')} 'unclean';

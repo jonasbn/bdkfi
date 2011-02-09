@@ -5,9 +5,8 @@ package Business::DK::FI;
 use strict;
 use warnings;
 use vars qw($VERSION @EXPORT_OK @ISA);
-use Params::Validate qw(validate_pos SCALAR);
+use Params::Validate qw(validate_pos SCALAR ARRAYREF);
 use Readonly;
-use Business::DK::CVR qw(_calculate_sum);
 
 $VERSION = '0.01';
 @EXPORT_OK = qw(validate validateFI generate);
@@ -28,13 +27,40 @@ sub validate {
 
     validate_pos( @_, { type => SCALAR, regex => qr/^\d{16}$/ } );
 
-    my $sum = _calculate_sum( $fi_number, \@controlcifers );
+    my ($first_digit, $last_digit);
+    ($first_digit, $fi_number, $last_digit) = $fi_number =~ m/^(\d{1})(\d{14})(\d{1})$/;
 
-    if ( $sum % MODULUS_OPERAND ) {
-        return INVALID;
-    } else {
+    my $sum = _calculate_sum( $fi_number, \@controlcifers );
+    my $checksum = 10 - ($sum % MODULUS_OPERAND);
+
+    if ( $checksum == $last_digit ) {
         return VALID;
+    } else {
+        return INVALID;
     }
+}
+
+sub _calculate_sum {
+    my ( $number, $controlcifers ) = @_;
+
+    validate_pos( @_,
+        { type => SCALAR, regex => qr/^\d+$/ },
+        { type => ARRAYREF },
+    );
+
+    my $sum = 0;
+    my @numbers = split //smx, $number;
+
+    for ( my $i = 0; $i < scalar @numbers; $i++ ) {
+        my $tmp = $numbers[$i] * $controlcifers->[$i];
+        
+        if ($tmp >= 10) {
+            $sum += ($tmp - 9);
+        } else {
+            $sum += $tmp;
+        }
+    }
+    return $sum;
 }
 
 sub generate {
