@@ -16,7 +16,7 @@ use English qw(-no_match_vars);
 use Test::Perl::Critic;
 
 if ( not $ENV{TEST_CRITIC} ) {
-    my $msg = 'Author test.  Set $ENV{TEST_CRITIC} to a true value to run.';
+    my $msg = 'set TEST_CRITIC to enable this test';
     plan( skip_all => $msg );
 }
 
