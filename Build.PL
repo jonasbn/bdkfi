@@ -4,24 +4,24 @@
 
 use Module::Build;
 my $build = Module::Build->new(
-	dist_author        => 'Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>',
-	module_name        => 'Business::DK::FI',
-	dist_version_from  => 'lib/Business/DK/FI.pm',
-	dist_abstract      => 'validation of Danish FI numbers',
-	license            => 'artistic',
-	create_makefile_pl => 'traditional',
-	create_readme      => 1,
-	recursive_test_files => 1,
-	requires => {
-	    'Exporter'          => '0', #core
-		'Carp'              => '0', #core
+    dist_author          => 'Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>',
+    module_name          => 'Business::DK::FI',
+    dist_version_from    => 'lib/Business/DK/FI.pm',
+    dist_abstract        => 'validation of Danish FI numbers',
+    license              => 'artistic',
+    create_makefile_pl   => 'traditional',
+    create_readme        => 1,
+    recursive_test_files => 1,
+    requires             => {
+        'Exporter'         => '0',    #core
+        'Carp'             => '0',    #core
         'Class::InsideOut' => '0',
         'Params::Validate' => '0',
         'Readonly'         => '0',
-	},
+    },
     build_requires => {
-        'Test::Exception' => '0',
-        'Test::Kwalitee' => '0',
+        'Test::Exception'    => '0',
+        'Test::Kwalitee'     => '0',
         'Test::Perl::Critic' => '0',
     },
     meta_merge => {
