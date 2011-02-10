@@ -15,7 +15,15 @@ my $build = Module::Build->new(
 	requires => {
 	    'Exporter'          => '0', #core
 		'Carp'              => '0', #core
+        'Class::InsideOut' => '0',
+        'Params::Validate' => '0',
+        'Readonly'         => '0',
 	},
+    build_requires => {
+        'Test::Exception' => '0',
+        'Test::Kwalitee' => '0',
+        'Test::Perl::Critic' => '0',
+    },
     meta_merge => {
         resources => {
             homepage => 'http://logiclab.jira.com/wiki/display/BDKFI/Home',
