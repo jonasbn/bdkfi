@@ -103,9 +103,22 @@ Business::DK::FI - validation of Danish FI numbers
 
 =head1 SYNOPSIS
 
-=head1 ABSTRACT
-
 =head1 DESCRIPTION
+
+=head1 METHODS
+
+=head2 validate
+
+Takes a single argument. 16 digit FI number.
+
+=head2 validateFI
+
+Less intrusive exported variation of L</validate>. It is actually L</validate>
+which is wrapping L</validateFI>.
+
+=head2 generate
+
+Simple FI generation method.
 
 =head1 BUGS
 
