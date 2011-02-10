@@ -3,9 +3,12 @@
 
 severity = 1
 
+verbose = 8
+
 #------------------------------------------------------------------------------
 
-[-CodeLayout::RequireTidyCode]
+#REF: http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-CodeLayout-RequireTidyCode
+[CodeLayout::RequireTidyCode]
 
 [Documentation::RequirePodSections]
 lib_sections    = NAME|DESCRIPTION|SYNOPSIS|AUTHOR|COPYRIGHT
@@ -16,3 +19,6 @@ keywords = URL Date Author Revision
 
 [CodeLayout::ProhibitHardTabs]
 allow_leading_tabs = 0
+
+#REF: http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma
+[-ValuesAndExpressions::ProhibitConstantPragma]
