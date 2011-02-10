@@ -31,13 +31,23 @@ sub validate {
     ($first_digit, $fi_number, $last_digit) = $fi_number =~ m/^(\d{1})(\d{14})(\d{1})$/;
 
     my $sum = _calculate_sum( $fi_number, \@controlcifers );
-    my $checksum = 10 - ($sum % MODULUS_OPERAND);
+    my $checksum = _calculate_checksum($sum);
 
     if ( $checksum == $last_digit ) {
         return VALID;
     } else {
         return INVALID;
     }
+}
+
+sub _calculate_checksum {
+    my ( $sum ) = @_;
+
+    validate_pos( @_,
+        { type => SCALAR, regex => qr/^\d+$/ },
+    );
+    
+    return (10 - ($sum % MODULUS_OPERAND));
 }
 
 sub _calculate_sum {
@@ -64,7 +74,23 @@ sub _calculate_sum {
 }
 
 sub generate {
+    my ( $number ) = @_;
+
+    validate_pos( @_,
+        { type => SCALAR, regex => qr/^\d{1,15}$/ },
+    );
+    my ($first_digit);
     
+    ($first_digit, $number) = $number =~ m/^(\d{1})(\d+)$/;
+
+    $number = sprintf '%014d', $number;
+    
+    my $sum = _calculate_sum( $number, \@controlcifers );
+    my $checksum = _calculate_checksum($sum);
+    
+    $number = $first_digit . $number . $checksum;
+    
+    return $number;
 }
 
 1;
