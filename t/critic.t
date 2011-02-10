@@ -1,27 +1,33 @@
 # Courtesy of Jeffrey Ryan Thalhammer
 # http://search.cpan.org/~thaljef/Test-Perl-Critic/lib/Test/Perl/Critic.pm
 
+# The severity parameter interpretation was added by jonasbn
+# See: http://logiclab.jira.com/wiki/display/OPEN/Test-Perl-Critic
+
+# $Id: critic.t 1781 2010-12-16 13:15:53Z jonasbn $
+
+# $HeadURL: https://subversion.dkhm/svn/scripts/DKHM-AAA/trunk/t/critic.t $
+
 use strict;
-  use warnings;
-  use File::Spec;
-  use Test::More;
-  use English qw(-no_match_vars);
+use warnings;
+use File::Spec;
+use Test::More;
+use English qw(-no_match_vars);
+use Test::Perl::Critic;
 
-  if ( not $ENV{TEST_AUTHOR} ) {
-      my $msg = 'Author test.  Set $ENV{TEST_AUTHOR} to a true value to run.';
-      plan( skip_all => $msg );
-  }
+if ( not $ENV{TEST_CRITIC} ) {
+    my $msg = 'Author test.  Set $ENV{TEST_CRITIC} to a true value to run.';
+    plan( skip_all => $msg );
+}
 
-  eval { use Test::Perl::Critic (-severity => 5); };
+my $rcfile = File::Spec->catfile( 't', 'perlcriticrc' );
 
-  if ( $EVAL_ERROR ) {
-     my $msg = 'Test::Perl::Critic required to criticise code';
-     plan( skip_all => $msg );
-  }
+Test::Perl::Critic->import(
+    -profile => $rcfile,
+    -severity => $ENV{TEST_CRITIC} ? $ENV{TEST_CRITIC} : 5
+);
 
-  my $rcfile = File::Spec->catfile( 't', 'perlcriticrc' );
-  Test::Perl::Critic->import( -profile => $rcfile );
-  all_critic_ok();
+all_critic_ok();
 
 __END__
 
