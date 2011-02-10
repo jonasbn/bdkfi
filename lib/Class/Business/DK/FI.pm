@@ -10,6 +10,8 @@ use English qw(-no_match_vars);
 
 use Business::DK::FI qw(validateFI);
 
+private number => my %number;    # read-only accessor: number()
+
 sub new {
     my ( $class, $number ) = @_;
 
