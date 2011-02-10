@@ -60,4 +60,56 @@ sub set_number {
 
 __END__
 
-1;
+=head1 NAME
+
+Class::Business::DK::FI - class for Danish FI numbers
+
+=head1 SYNOPSIS
+
+=head1 DESCRIPTION
+
+=head1 METHODS
+
+=head2 new
+
+=head2 number
+
+=head2 get_number
+
+=head2 set_number
+
+Takes a single argument. 16 digit FI number.
+
+=head1 BUGS
+
+Please report issues via CPAN RT:
+
+  http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-FI
+
+or by sending mail to
+
+  bug-Business-DK-FI@rt.cpan.org
+
+=head1 SEE ALSO
+
+=over
+
+=item 
+
+=back
+
+=head1 AUTHOR
+
+Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
+
+=head1 COPYRIGHT
+
+Business-DK-FI is (C) by Jonas B. Nielsen, (jonasbn) 2006
+
+Business-DK-FI is released under the artistic license
+
+The distribution is licensed under the Artistic License, as specified
+by the Artistic file in the standard perl distribution
+(http://www.perl.com/language/misc/Artistic.html).
+
+=cut
