@@ -2,11 +2,11 @@
 
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 9;
 use Test::Exception;
 
 #Test 1
-use_ok('Business::DK::FI', qw(validate));
+use_ok('Business::DK::FI', qw(validate validateFI));
 
 #Test 2
 ok(validate('0026840149965328'), 'Ok');
@@ -28,3 +28,6 @@ dies_ok {validate(0)} 'zero';
 
 #Test 8
 ok(! validate('0026840149965327'), 'error prone');
+
+#Test 2
+ok(validateFI('0026840149965328'), 'Ok');
