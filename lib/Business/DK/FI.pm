@@ -81,9 +81,13 @@ sub generate {
     );
     my ($first_digit);
     
-    ($first_digit, $number) = $number =~ m/^(\d{1})(\d+)$/;
+    ($first_digit, $number) = $number =~ m/^(\d{1}(?=\d*))(\d*)$/;
 
-    $number = sprintf '%014d', $number;
+    if ($number) {
+        $number = sprintf '%014d', $number;
+    } else {
+        $number = sprintf '%014d', $first_digit;
+    }
     
     my $sum = _calculate_sum( $number, \@controlcifers );
     my $checksum = _calculate_checksum($sum);
