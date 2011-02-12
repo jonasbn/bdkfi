@@ -17,6 +17,7 @@ use constant INVALID         => 0;
 use constant VALID           => 1;
 
 Readonly my @controlcifers => qw(1 2 1 2 1 2 1 2 1 2 1 2 1 2);
+Readonly my $control_length => scalar @controlcifers;
 
 sub validateFI {
     return validate(shift);
@@ -25,10 +26,10 @@ sub validateFI {
 sub validate {
     my ($fi_number) = @_;
 
-    validate_pos( @_, { type => SCALAR, regex => qr/^\d{16}$/ } );
+    validate_pos( @_, { type => SCALAR, regex => qr/^\d{15}$/ } );
 
-    my ($first_digit, $last_digit);
-    ($first_digit, $fi_number, $last_digit) = $fi_number =~ m/^(\d{1})(\d{14})(\d{1})$/;
+    my ($last_digit);
+    ($fi_number, $last_digit) = $fi_number =~ m/^(\d{$control_length})(\d{1})$/;
 
     my $sum = _calculate_sum( $fi_number, \@controlcifers );
     my $checksum = _calculate_checksum($sum);
@@ -77,22 +78,15 @@ sub generate {
     my ( $number ) = @_;
 
     validate_pos( @_,
-        { type => SCALAR, regex => qr/^\d{1,15}$/ },
+        { type => SCALAR, regex => qr/^\d{1,$control_length}$/ },
     );
-    my ($first_digit);
-    
-    ($first_digit, $number) = $number =~ m/^(\d{1}(?=\d*))(\d*)$/;
 
-    if ($number) {
-        $number = sprintf '%014d', $number;
-    } else {
-        $number = sprintf '%014d', $first_digit;
-    }
+    $number = sprintf '%0'.$control_length.'d', $number;
     
     my $sum = _calculate_sum( $number, \@controlcifers );
     my $checksum = _calculate_checksum($sum);
     
-    $number = $first_digit . $number . $checksum;
+    $number = $number . $checksum;
     
     return $number;
 }
