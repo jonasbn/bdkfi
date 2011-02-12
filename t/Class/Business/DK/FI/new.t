@@ -10,7 +10,7 @@ use English qw(-no_match_vars);
 
 use Class::Business::DK::FI;
 
-ok(my $fi = Class::Business::DK::FI->new(0026840149965328));
+ok(my $fi = Class::Business::DK::FI->new('0026840149965328'));
 
 isa_ok($fi, 'Class::Business::DK::FI');
 
