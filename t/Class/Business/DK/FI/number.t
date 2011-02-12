@@ -11,6 +11,6 @@ use Class::Business::DK::FI;
 
 my $fi;
 
-$fi = Class::Business::DK::FI->new('0026840149965328');
+$fi = Class::Business::DK::FI->new('026840149965328');
 
-is($fi->number(), '0026840149965328');
+is($fi->number(), '026840149965328');

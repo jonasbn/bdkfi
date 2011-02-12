@@ -10,9 +10,9 @@ use English qw(-no_match_vars);
 
 use Class::Business::DK::FI;
 
-my $fi = Class::Business::DK::FI->new('0026840149965328');
+my $fi = Class::Business::DK::FI->new('026840149965328');
 
-ok($fi->set_number(30947460));
+ok($fi->set_number('000006535361999'));
 
 dies_ok { $fi->set_number(); } 'no argument to mutator';
 

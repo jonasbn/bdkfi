@@ -11,7 +11,7 @@ use_ok('Business::DK::FI', qw(generate validate));
 #Test 2
 ok(validate(generate(1)), 'Ok');
 
-ok(validate(generate(123456789012345)), 'Ok');
+ok(validate(generate(12345678901234)), 'Ok');
 
 dies_ok { validate(generate(1234567890123456)) } 'too long, 16'; 
          
