@@ -4,9 +4,9 @@
 # The severity parameter interpretation was added by jonasbn
 # See: http://logiclab.jira.com/wiki/display/OPEN/Test-Perl-Critic
 
-# $Id: critic.t 1781 2010-12-16 13:15:53Z jonasbn $
+# $Id$
 
-# $HeadURL: https://subversion.dkhm/svn/scripts/DKHM-AAA/trunk/t/critic.t $
+# $HeadURL$
 
 use strict;
 use warnings;
@@ -15,8 +15,10 @@ use Test::More;
 use English qw(-no_match_vars);
 use Test::Perl::Critic;
 
+our $VERSION = '1.00';
+
 if ( not $ENV{TEST_CRITIC} ) {
-    my $msg = 'set TEST_CRITIC to enable this test';
+    my $msg = 'Author test.  Set $ENV{TEST_CRITIC} to a true value to run.';
     plan( skip_all => $msg );
 }
 
@@ -24,7 +26,7 @@ my $rcfile = File::Spec->catfile( 't', 'perlcriticrc' );
 
 Test::Perl::Critic->import(
     -profile => $rcfile,
-    -severity => $ENV{TEST_CRITIC} ? $ENV{TEST_CRITIC} : 5
+    -severity => ($ENV{TEST_CRITIC} and $ENV{TEST_CRITIC} >= 0 and $ENV{TEST_CRITIC} <= 5) ? $ENV{TEST_CRITIC} : 5
 );
 
 all_critic_ok();
