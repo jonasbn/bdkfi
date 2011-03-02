@@ -66,7 +66,15 @@ __END__
 
 Class::Business::DK::FI - class for Danish FI numbers
 
+=head1 VERSION
+
+The documentation describes version 0.01
+
 =head1 SYNOPSIS
+
+    use Class::Business::DK::FI;
+    
+    my $FI = Class::Business::DK::FI->new('026840149965328')
 
 =head1 DESCRIPTION
 

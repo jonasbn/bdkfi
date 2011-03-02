@@ -99,7 +99,25 @@ __END__
 
 Business::DK::FI - validation of Danish FI numbers
 
+=head1 VERSION
+
+The documentation describes version 0.01
+
 =head1 SYNOPSIS
+
+    use Business::DK::FI qw(validate validateFI generate);
+    
+    if (validate('026840149965328')) {
+        print "026840149965328 is valid\n";
+    }
+    
+    
+    my $fi_number = generate(1);
+    
+    if ($fi_number eq '000000000000018') {
+        print "we have a fi number\n";
+    }
+    
 
 =head1 DESCRIPTION
 
@@ -118,6 +136,10 @@ which is wrapping L</validateFI>.
 
 Simple FI generation method.
 
+=head2 _calculate_checksum
+
+=head2 _calculate_sum
+
 =head1 BUGS
 
 Please report issues via CPAN RT:
@@ -132,7 +154,7 @@ or by sending mail to
 
 =over
 
-=item 
+=item * 
 
 =back
 
