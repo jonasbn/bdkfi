@@ -46,7 +46,7 @@ svn-commit\.tmp
 ^MANIFEST\.SKIP
 
 # Avoid archives of this distribution
-\bModule-Build-Bundle-[\d\.\_]+
+\bBusiness-DK-FI-[\d\.\_]+
 
 # Avoid project files
 \.komodoproject
