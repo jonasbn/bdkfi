@@ -28,9 +28,9 @@ if ( not $TEST_CRITIC ) {
 
 	if ($TEST_VERBOSE) {
 		if ($TEST_CRITIC <= 5) {
-			print STDERR "Running Perl::Critic test with severity: $TEST_CRITIC";
+			print STDERR "\nRunning Perl::Critic test with severity: $TEST_CRITIC\n";
 		} else {
-			print STDERR "Running Perl::Critic test with resourcefile: $rcfile";
+			print STDERR "\nRunning Perl::Critic test with resourcefile: $rcfile\n";
 		}
 	}
 
