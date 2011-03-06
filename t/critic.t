@@ -23,8 +23,14 @@ if ( not $TEST_CRITIC ) {
     plan( skip_all => $msg );
 
 } else {
-	
+		
 	my $rcfile = File::Spec->catfile( 't', 'perlcriticrc' );
+
+	if ($TEST_VERBOSE <= 5) {
+		print STDERR "Running Perl::Critic test with severity: $TEST_CRITIC";
+	} else {
+		print STDERR "Running Perl::Critic test with resourcefile: $rcfile";
+	}
 
 	# We use the severity communicated via the environment variable
 	if ($TEST_CRITIC >= 1 and $TEST_CRITIC <= 5) {
