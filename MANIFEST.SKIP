@@ -46,14 +46,11 @@ svn-commit\.tmp
 ^MANIFEST\.SKIP
 
 # Avoid archives of this distribution
-\bBusiness-DK-FI-[\d\.\_]+
+\b\w+-[\d\.\_]+.tar
+\b\w+-[\d\.\_]+.tar.gz
 
 # Avoid project files
 \.komodoproject
-t/testMETA.yml
-t/testMYMETA.yml
-t/META.yml
-t/MYMETA.yml
 spikes
 
 # Avoid OSX specific files
