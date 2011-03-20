@@ -13,6 +13,6 @@ ok(validate(generate(1)), 'Ok');
 
 ok(validate(generate(12345678901234)), 'Ok');
 
-dies_ok { validate(generate(1234567890123456)) } 'too long, 16'; 
+dies_ok { validate(generate(123456789012345)) } 'too long, 15'; 
          
 dies_ok { generate() } 'no params';
