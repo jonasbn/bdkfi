@@ -4,13 +4,13 @@ package Business::DK::FI;
 
 use strict;
 use warnings;
-use vars qw($VERSION @EXPORT_OK @ISA);
+use vars qw($VERSION @EXPORT_OK);
 use Params::Validate qw(validate_pos SCALAR ARRAYREF);
 use Readonly;
+use base qw(Exporter);
 
 $VERSION = '0.01';
 @EXPORT_OK = qw(validate validateFI generate);
-@ISA = qw(Exporter);
 
 use constant MODULUS_OPERAND => 10;
 use constant INVALID         => 0;
@@ -23,10 +23,12 @@ sub validateFI {
     return validate(shift);
 }
 
+## no critic (Subroutines::RequireArgUnpacking)
+
 sub validate {
     my ($fi_number) = @_;
 
-    validate_pos( @_, { type => SCALAR, regex => qr/^\d{15}$/ } );
+    validate_pos( @_, { type => SCALAR, regex => qr/^\d{15}$/xsm } );
 
     my ($last_digit);
     ($fi_number, $last_digit) = $fi_number =~ m/^(\d{$control_length})(\d{1})$/;
@@ -45,7 +47,7 @@ sub _calculate_checksum {
     my ( $sum ) = @_;
 
     validate_pos( @_,
-        { type => SCALAR, regex => qr/^\d+$/ },
+        { type => SCALAR, regex => qr/^\d+$/xsm },
     );
     
     return (10 - ($sum % MODULUS_OPERAND));
@@ -55,7 +57,7 @@ sub _calculate_sum {
     my ( $number, $controlcifers ) = @_;
 
     validate_pos( @_,
-        { type => SCALAR, regex => qr/^\d+$/ },
+        { type => SCALAR, regex => qr/^\d+$/xsm },
         { type => ARRAYREF },
     );
 
@@ -115,17 +117,31 @@ The documentation describes version 0.01
     my $fi_number = generate(1);
     
     if ($fi_number eq '000000000000018') {
-        print "we have a fi number\n";
+        print "we have a FI number\n";
     }
     
 
 =head1 DESCRIPTION
 
+FI numbers are numbers used on GIRO payment forms. These can be used to do
+online payments in banks or at in physical banks or post offices.
+
+The module currently only supports FI numbers in the following series:
+
+=over
+
+=item * 71
+
+=item * 75
+
+=back
+
 =head1 METHODS
 
 =head2 validate
 
-Takes a single argument. 16 digit FI number.
+Takes a single argument. 15 digit FI number. Returns true (1) or false (0)
+indicating whether the provided parameter adheres to requirements.
 
 =head2 validateFI
 
@@ -134,7 +150,17 @@ which is wrapping L</validateFI>.
 
 =head2 generate
 
-Simple FI generation method.
+Simple FI generation method. Takes an arbitrary number:
+
+=over
+
+=item * length between 1 and 14
+
+=item * value between 1 and 99999999999999
+
+=back
+
+Returns a FI number
 
 =head2 _calculate_checksum
 
@@ -154,7 +180,7 @@ or by sending mail to
 
 =over
 
-=item * 
+=item * http://www.pbs.dk/
 
 =back
 
@@ -164,7 +190,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-FI is (C) by Jonas B. Nielsen, (jonasbn) 2006
+Business-DK-FI is (C) by Jonas B. Nielsen, (jonasbn) 2011
 
 Business-DK-FI is released under the artistic license
 
