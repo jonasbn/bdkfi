@@ -21,8 +21,6 @@ my $build = Module::Build->new(
     },
     build_requires => {
         'Test::Exception'    => '0',
-        'Test::Kwalitee'     => '0',
-        'Test::Perl::Critic' => '0',
     },
     meta_merge => {
         resources => {
