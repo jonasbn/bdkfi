@@ -10,6 +10,8 @@ use English qw(-no_match_vars);
 
 use Business::DK::FI qw(validateFI);
 
+our $VERSION = '0.01';
+
 private number => my %number;    # read-only accessor: number()
 
 sub new {
