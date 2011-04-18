@@ -9,14 +9,14 @@ use Params::Validate qw(validate_pos SCALAR ARRAYREF);
 use Readonly;
 use base qw(Exporter);
 
-$VERSION = '0.01';
+$VERSION   = '0.01';
 @EXPORT_OK = qw(validate validateFI generate);
 
 use constant MODULUS_OPERAND => 10;
 use constant INVALID         => 0;
 use constant VALID           => 1;
 
-Readonly my @controlcifers => qw(1 2 1 2 1 2 1 2 1 2 1 2 1 2);
+Readonly my @controlcifers  => qw(1 2 1 2 1 2 1 2 1 2 1 2 1 2);
 Readonly my $control_length => scalar @controlcifers;
 
 sub validateFI {
@@ -31,7 +31,8 @@ sub validate {
     validate_pos( @_, { type => SCALAR, regex => qr/^\d{15}$/xsm } );
 
     my ($last_digit);
-    ($fi_number, $last_digit) = $fi_number =~ m/^(\d{$control_length})(\d{1})$/xsm;
+    ( $fi_number, $last_digit )
+        = $fi_number =~ m/^(\d{$control_length})(\d{1})$/xsm;
 
     my $sum = _calculate_sum( $fi_number, \@controlcifers );
     my $checksum = _calculate_checksum($sum);
@@ -44,19 +45,18 @@ sub validate {
 }
 
 sub _calculate_checksum {
-    my ( $sum ) = @_;
+    my ($sum) = @_;
 
-    validate_pos( @_,
-        { type => SCALAR, regex => qr/^\d+$/xsm },
-    );
-    
-    return (10 - ($sum % MODULUS_OPERAND));
+    validate_pos( @_, { type => SCALAR, regex => qr/^\d+$/xsm }, );
+
+    return ( 10 - ( $sum % MODULUS_OPERAND ) );
 }
 
 sub _calculate_sum {
     my ( $number, $controlcifers ) = @_;
 
-    validate_pos( @_,
+    validate_pos(
+        @_,
         { type => SCALAR, regex => qr/^\d+$/xsm },
         { type => ARRAYREF },
     );
@@ -66,9 +66,9 @@ sub _calculate_sum {
 
     for ( my $i = 0; $i < scalar @numbers; $i++ ) {
         my $tmp = $numbers[$i] * $controlcifers->[$i];
-        
-        if ($tmp >= 10) {
-            $sum += ($tmp - 9);
+
+        if ( $tmp >= 10 ) {
+            $sum += ( $tmp - 9 );
         } else {
             $sum += $tmp;
         }
@@ -77,19 +77,19 @@ sub _calculate_sum {
 }
 
 sub generate {
-    my ( $number ) = @_;
+    my ($number) = @_;
 
     validate_pos( @_,
         { type => SCALAR, regex => qr/^\d{1,$control_length}$/xsm },
     );
 
-    $number = sprintf '%0'.$control_length.'d', $number;
-    
+    $number = sprintf '%0' . $control_length . 'd', $number;
+
     my $sum = _calculate_sum( $number, \@controlcifers );
     my $checksum = _calculate_checksum($sum);
-    
+
     $number = $number . $checksum;
-    
+
     return $number;
 }
 
