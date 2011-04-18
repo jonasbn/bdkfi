@@ -10,6 +10,9 @@ verbose = 8
 #REF: http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-CodeLayout-RequireTidyCode
 [CodeLayout::RequireTidyCode]
 
+[-Miscellanea::RequireRcsKeywords]
+keywords = Revision Source Date Author Id
+
 [Documentation::RequirePodSections]
 lib_sections    = NAME|DESCRIPTION|SYNOPSIS|AUTHOR|COPYRIGHT
 script_sections = NAME|DESCRIPTION|SYNOPSIS|AUTHOR|COPYRIGHT
@@ -22,3 +25,21 @@ allow_leading_tabs = 0
 
 #REF: http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma
 [-ValuesAndExpressions::ProhibitConstantPragma]
+
+[-Documentation::RequirePodLinksIncludeText]
+
+## TODO ##
+
+[-Subroutines::RequireArgUnpacking]
+
+[-Bangs::ProhibitVagueNames]
+
+[-ErrorHandling::RequireCheckingReturnValueOfEval]
+
+[-Variables::ProhibitPunctuationVars]
+
+[-ControlStructures::ProhibitCStyleForLoops]
+
+[-ValuesAndExpressions::ProhibitMagicNumbers]
+
+[-NamingConventions::Capitalization]
