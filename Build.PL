@@ -19,6 +19,10 @@ my $build = Module::Build->new(
         'Params::Validate' => '0',
         'Readonly'         => '0',
     },
+    recommends => {
+        'Test::Kwalitee'     => '0',
+        'Test::Perl::Critic' => '0',
+    },
     build_requires => {
         'Test::Exception'    => '0',
     },
