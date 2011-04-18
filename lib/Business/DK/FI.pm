@@ -31,7 +31,7 @@ sub validate {
     validate_pos( @_, { type => SCALAR, regex => qr/^\d{15}$/xsm } );
 
     my ($last_digit);
-    ($fi_number, $last_digit) = $fi_number =~ m/^(\d{$control_length})(\d{1})$/;
+    ($fi_number, $last_digit) = $fi_number =~ m/^(\d{$control_length})(\d{1})$/xsm;
 
     my $sum = _calculate_sum( $fi_number, \@controlcifers );
     my $checksum = _calculate_checksum($sum);
@@ -80,7 +80,7 @@ sub generate {
     my ( $number ) = @_;
 
     validate_pos( @_,
-        { type => SCALAR, regex => qr/^\d{1,$control_length}$/ },
+        { type => SCALAR, regex => qr/^\d{1,$control_length}$/xsm },
     );
 
     $number = sprintf '%0'.$control_length.'d', $number;
