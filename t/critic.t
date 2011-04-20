@@ -25,12 +25,18 @@ if ( not $TEST_CRITIC ) {
 } else {
 		
 	my $rcfile = File::Spec->catfile( 't', 'perlcriticrc' );
+    
+    if (not $rcfile and $TEST_VERBOSE) {
+        print STDERR "\nNo Perl::Critic resource file located in t, falling back to ~/.perlcriticrc\n";
+    } elsif ($TEST_VERBOSE) {
+        print STDERR "\nRunning Perl::Critic test with resourcefile: $rcfile\n";
+    }
 
 	if ($TEST_VERBOSE) {
 		if ($TEST_CRITIC <= 5) {
 			print STDERR "\nRunning Perl::Critic test with severity: $TEST_CRITIC\n";
 		} else {
-			print STDERR "\nRunning Perl::Critic test with resourcefile: $rcfile\n";
+			print STDERR "\nRunning Perl::Critic test with severity defined in resourcefile: $rcfile\n";
 		}
 	}
 
