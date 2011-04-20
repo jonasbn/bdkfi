@@ -10,23 +10,18 @@ verbose = 8
 #REF: http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-CodeLayout-RequireTidyCode
 [CodeLayout::RequireTidyCode]
 
-[-Miscellanea::RequireRcsKeywords]
-keywords = Revision Source Date Author Id
+[Miscellanea::RequireRcsKeywords]
+keywords = Id
 
 [Documentation::RequirePodSections]
-lib_sections    = NAME|DESCRIPTION|SYNOPSIS|AUTHOR|COPYRIGHT
-script_sections = NAME|DESCRIPTION|SYNOPSIS|AUTHOR|COPYRIGHT
-
-[Miscellanea::RequireRcsKeywords]
-keywords = URL Date Author Revision
+lib_sections    = NAME|SYNOPSIS|VERSION|DESCRIPTION|METHODS|DIAGNOSTICS|CONFIGURATION AND ENVIRONMENT|DEPENDENCIES|TEST AND QUALITY|QUALITY AND CODING STANDARD|BUGS AND LIMITATIONS|BUG REPORTING|DEVELOPMENT|TODO|SEE ALSO|AUTHOR|LICENSE AND COPYRIGHT
+script_sections = NAME|SYNOPSIS|VERSION|DESCRIPTION|METHODS|DIAGNOSTICS|CONFIGURATION AND ENVIRONMENT|DEPENDENCIES|TEST AND QUALITY|QUALITY AND CODING STANDARD|BUGS AND LIMITATIONS|BUG REPORTING|DEVELOPMENT|TODO|SEE ALSO|AUTHOR|LICENSE AND COPYRIGHT
 
 [CodeLayout::ProhibitHardTabs]
 allow_leading_tabs = 0
 
 #REF: http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma
 [-ValuesAndExpressions::ProhibitConstantPragma]
-
-[-Documentation::RequirePodLinksIncludeText]
 
 ## TODO ##
 
@@ -43,3 +38,5 @@ allow_leading_tabs = 0
 [-ValuesAndExpressions::ProhibitMagicNumbers]
 
 [-NamingConventions::Capitalization]
+
+[-Documentation::RequirePodLinksIncludeText]
