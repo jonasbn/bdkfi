@@ -18,10 +18,7 @@ my $build = Module::Build->new(
         'Class::InsideOut' => '0',
         'Params::Validate' => '0',
         'Readonly'         => '0',
-    },
-    recommends => {
-        'Test::Kwalitee'     => '0',
-        'Test::Perl::Critic' => '0',
+        'Try::Tiny'        => '0',
     },
     build_requires => {
         'Test::Exception'    => '0',
@@ -32,8 +29,7 @@ my $build = Module::Build->new(
             bugtracker =>
                 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-FI',
             repository => 'http://logicLAB.jira.com/svn/BDKFI',
-            ProjectChangelog =>
-                'http://logiclab.jira.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel',
+            ProjectChangelog => 'http://logiclab.jira.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel',
             ProjectSite => 'http://logicLAB.jira.com/browse/BDKFI',
             ProjectWiki => 'http://logiclab.jira.com/wiki/display/BDKFI/Home',
         }
