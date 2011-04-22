@@ -171,7 +171,7 @@ The module is generally well tested, apart for the I<untainting> facility implem
 This is a plugin for L<Data::FormValidator> it follows the de facto standard of
 code layout and naming used in other L<Data::FormValidator> plugins and meets requirements defined by L<Data::FormValidator>.
 
-The code passes L<Perl::Critic> tests at severity 1 (brutal) with a set of policies disables. please see F<t/perlcriticrc> and the list below:
+The code passes L<Perl::Critic> tests at severity 1 (I<brutal>) with a set of policies disabled. please see F<t/perlcriticrc> and the list below:
 
 =over
 

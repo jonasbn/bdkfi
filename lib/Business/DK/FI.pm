@@ -8,33 +8,36 @@ use vars qw($VERSION @EXPORT_OK);
 use Params::Validate qw(validate_pos SCALAR ARRAYREF);
 use Readonly;
 use base qw(Exporter);
+use English qw( -no_match_vars );
 
 $VERSION   = '0.01';
 @EXPORT_OK = qw(validate validateFI generate);
 
 use constant MODULUS_OPERAND => 10;
+use constant THRESHOLD       => 10;
+use constant DEDUCTION       => 9;
 use constant INVALID         => 0;
 use constant VALID           => 1;
 
-Readonly my @controlcifers  => qw(1 2 1 2 1 2 1 2 1 2 1 2 1 2);
-Readonly my $control_length => scalar @controlcifers;
+Readonly my @CONTROLCIFERS  => qw(1 2 1 2 1 2 1 2 1 2 1 2 1 2);
+Readonly my $CONTROL_LENGTH => scalar @CONTROLCIFERS;
+
+## no critic (NamingConventions::Capitalization)
 
 sub validateFI {
     return validate(shift);
 }
 
-## no critic (Subroutines::RequireArgUnpacking)
-
 sub validate {
-    my ($fi_number) = @_;
+    my ($fi_number) = @ARG;
 
-    validate_pos( @_, { type => SCALAR, regex => qr/^\d{15}$/xsm } );
+    validate_pos( @ARG, { type => SCALAR, regex => qr/^\d{15}$/xsm } );
 
     my ($last_digit);
     ( $fi_number, $last_digit )
-        = $fi_number =~ m/^(\d{$control_length})(\d{1})$/xsm;
+        = $fi_number =~ m/^(\d{$CONTROL_LENGTH})(\d{1})$/xsm;
 
-    my $sum = _calculate_sum( $fi_number, \@controlcifers );
+    my $sum = _calculate_sum( $fi_number, \@CONTROLCIFERS );
     my $checksum = _calculate_checksum($sum);
 
     if ( $checksum == $last_digit ) {
@@ -45,18 +48,18 @@ sub validate {
 }
 
 sub _calculate_checksum {
-    my ($sum) = @_;
+    my ($sum) = @ARG;
 
-    validate_pos( @_, { type => SCALAR, regex => qr/^\d+$/xsm }, );
+    validate_pos( @ARG, { type => SCALAR, regex => qr/^\d+$/xsm }, );
 
-    return ( 10 - ( $sum % MODULUS_OPERAND ) );
+    return ( THRESHOLD - ( $sum % MODULUS_OPERAND ) );
 }
 
 sub _calculate_sum {
-    my ( $number, $controlcifers ) = @_;
+    my ( $number, $CONTROLCIFERS ) = @ARG;
 
     validate_pos(
-        @_,
+        @ARG,
         { type => SCALAR, regex => qr/^\d+$/xsm },
         { type => ARRAYREF },
     );
@@ -64,28 +67,29 @@ sub _calculate_sum {
     my $sum = 0;
     my @numbers = split //smx, $number;
 
+## no critic (ControlStructures::ProhibitCStyleForLoops)
     for ( my $i = 0; $i < scalar @numbers; $i++ ) {
-        my $tmp = $numbers[$i] * $controlcifers->[$i];
+        my $tmp_sum = $numbers[$i] * $CONTROLCIFERS->[$i];
 
-        if ( $tmp >= 10 ) {
-            $sum += ( $tmp - 9 );
+        if ( $tmp_sum >= THRESHOLD ) {
+            $sum += ( $tmp_sum - DEDUCTION );
         } else {
-            $sum += $tmp;
+            $sum += $tmp_sum;
         }
     }
     return $sum;
 }
 
 sub generate {
-    my ($number) = @_;
+    my ($number) = @ARG;
 
-    validate_pos( @_,
-        { type => SCALAR, regex => qr/^\d{1,$control_length}$/xsm },
+    validate_pos( @ARG,
+        { type => SCALAR, regex => qr/^\d{1,$CONTROL_LENGTH}$/xsm },
     );
 
-    $number = sprintf '%0' . $control_length . 'd', $number;
+    $number = sprintf '%0' . $CONTROL_LENGTH . 'd', $number;
 
-    my $sum = _calculate_sum( $number, \@controlcifers );
+    my $sum = _calculate_sum( $number, \@CONTROLCIFERS );
     my $checksum = _calculate_checksum($sum);
 
     $number = $number . $checksum;
@@ -136,12 +140,12 @@ The module currently only supports FI numbers in the following series:
 
 =back
 
-=head1 METHODS
+=head1 SUBROUTINES AND METHODS
 
 =head2 validate
 
 Takes a single argument. 15 digit FI number. Returns true (1) or false (0)
-indicating whether the provided parameter adheres to requirements.
+indicating whether the provided parameter adheres to specification.
 
 =head2 validateFI
 
@@ -150,7 +154,7 @@ which is wrapping L</validateFI>.
 
 =head2 generate
 
-Simple FI generation method. Takes an arbitrary number:
+Simple FI generation method. Takes an arbitrary number adhering to the following requirements: 
 
 =over
 
@@ -160,27 +164,124 @@ Simple FI generation method. Takes an arbitrary number:
 
 =back
 
-Returns a FI number
+Returns a valid FI number.
+
+=head2 PRIVATE SUBROUTINES AND METHODS
 
 =head2 _calculate_checksum
 
+This method calculates a checksum, it takes a single number as parameter and returns the calculated checksum.
+
 =head2 _calculate_sum
 
-=head1 BUGS
+This method calculates a sum it takes a number and a reference to an array of control cifers. It calculates a single sum based on the number and the control cifer and returns this.
+
+=head1 DIAGNOSTICS
+
+All methods B<die> if their API is not respected. Method calls can with success be wrapped in L<Try::Tiny> or C<eval> blocks.
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+The module requires no special configuration or environment.
+
+=head1 DEPENDENCIES
+
+=over
+
+=item * L<Params::Validate>
+
+=item * L<Readonly>
+
+=item * L<Exporter>
+
+=item * L<English>
+
+=back
+
+=head1 BUGS AND LIMITATIONS
+
+This module has no known bugs or limitations.
+
+=head1 BUG REPORTING
 
 Please report issues via CPAN RT:
 
-  http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-FI
+=over
+
+=item * L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-FI>
+
+=back
 
 or by sending mail to
 
-  bug-Business-DK-FI@rt.cpan.org
+=over
+
+=item * C<< <bug-Business-DK-FI@rt.cpan.org> >>
+
+=back
+
+=head1 TEST AND QUALITY
+
+=head2 TEST COVERAGE
+
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    File                           stmt   bran   cond    sub    pod   time  total
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    blib/lib/Business/DK/FI.pm    100.0  100.0    n/a  100.0  100.0   35.1  100.0
+    ...b/Class/Business/DK/FI.pm  100.0  100.0   66.7  100.0  100.0   64.9   98.4
+    Total                         100.0  100.0   66.7  100.0  100.0  100.0   99.3
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+
+=head1 QUALITY AND CODING STANDARD
+
+The code passes L<Perl::Critic> tests at severity 1 (I<brutal>) with a set of policies disabled. please see F<t/perlcriticrc> and the list below:
+
+=over
+
+=item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma>, please
+see: L<http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma>
+
+=item * L<Perl::Critic::Policy::Documentation::RequirePodLinksIncludeText>, this
+is listed in the L</TODO> it requires numerous changes to the distribution POD.
+
+=item * L<Perl::Critic::Policy::NamingConventions::Capitalization>, L</validateFI> is exported both as L</validateFI> and L</validate> and B<FI> is our used acronym
+so we try to stick to this
+
+=item * L<Perl::Critic::Policy::ControlStructures::ProhibitCStyleForLoops>, this
+is for the main algorithm, it was easier to do with a B<C-style for loop>
+
+=item * L<Perl::Critic::Policy::Subroutines::RequireArgUnpacking>, this is due to
+the way: L<Params::Validate> is used
+
+=item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers>, we
+use long control numbers
+
+=item * L<Perl::Critic:.:Policy::Variables::ProhibitPunctuationVars>
+
+=back
+
+=head1 TODO
+
+Please see the distribution F<TODO> file also and the distribution road map at:
+    L<http://logiclab.jira.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel>
 
 =head1 SEE ALSO
 
 =over
 
 =item * http://www.pbs.dk/
+
+=item * L<Try::Tiny>
+
+=item * L<Business::DK::CVR>
+
+=item * L<Business::DK::CPR>
+
+=item * L<Business::DK::PO>
+
+=item * L<Business::DK::Postalcode>
+
+=item * L<Business::DK::Phonenumber>
 
 =back
 
@@ -190,12 +291,14 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-FI is (C) by Jonas B. Nielsen, (jonasbn) 2011
+Business-DK-FI and related is (C) by Jonas B. Nielsen, (jonasbn) 2009-2011
 
-Business-DK-FI is released under the artistic license
+=head1 LICENSE
+
+Business-DK-FI and related is released under the artistic license
 
 The distribution is licensed under the Artistic License, as specified
 by the Artistic file in the standard perl distribution
-(http://www.perl.com/language/misc/Artistic.html).
+(http://dev.perl.org/licenses/artistic.html).
 
 =cut
