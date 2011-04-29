@@ -4,7 +4,7 @@
 # The severity parameter interpretation was added by jonasbn
 # See: http://logiclab.jira.com/wiki/display/OPEN/Test-Perl-Critic
 
-# $Id: critic.t 7526 2011-03-06 21:55:25Z jonasbn $
+# $Id: critic.t 7555 2011-04-08 19:49:43Z jonasbn $
 
 # $HeadURL$
 
@@ -13,27 +13,39 @@ use warnings;
 use File::Spec;
 use Test::More;
 use English qw(-no_match_vars);
-use Test::Perl::Critic;
 use Env qw($TEST_CRITIC $TEST_VERBOSE);
 
-our $VERSION = '1.01';
+use constant GENTLE => 5;
+use constant BRUTAL => 1;
+
+our $VERSION = '1.03';
 
 if ( not $TEST_CRITIC ) {
     my $msg = 'Perl::Critic test. Set $ENV{TEST_CRITIC} to enable: 1-5 for severity, above 5 for resource file';
     plan( skip_all => $msg );
 
 } else {
-		
-	my $rcfile = File::Spec->catfile( 't', 'perlcriticrc' );
-    
-    if (not $rcfile and $TEST_VERBOSE) {
-        print STDERR "\nNo Perl::Critic resource file located in t, falling back to ~/.perlcriticrc\n";
-    } elsif ($TEST_VERBOSE) {
-        print STDERR "\nRunning Perl::Critic test with resourcefile: $rcfile\n";
+
+    eval "use Test::Perl::Critic";
+
+    if ($@) {
+        plan skip_all => 'Test::Perl::Critic not installed';
     }
+	
+	my $rcfile = File::Spec->catfile( 't', 'perlcriticrc' );
+	
+	if (! -f $rcfile) {
+		$rcfile = '';
+	}
 
 	if ($TEST_VERBOSE) {
-		if ($TEST_CRITIC <= 5) {
+	    if (not $rcfile) {
+	        print STDERR "\nNo available Perl::Critic resource file in t/, falling back to ~/.perlcriticrc\n";
+	    } else {
+	        print STDERR "\nRunning Perl::Critic test with resourcefile: $rcfile\n";
+	    }
+	
+		if ($TEST_CRITIC <= GENTLE) {
 			print STDERR "\nRunning Perl::Critic test with severity: $TEST_CRITIC\n";
 		} else {
 			print STDERR "\nRunning Perl::Critic test with severity defined in resourcefile: $rcfile\n";
@@ -41,7 +53,7 @@ if ( not $TEST_CRITIC ) {
 	}
 
 	# We use the severity communicated via the environment variable
-	if ($TEST_CRITIC >= 1 and $TEST_CRITIC <= 5) {
+	if ($TEST_CRITIC >= BRUTAL and $TEST_CRITIC <= GENTLE) {
     	Test::Perl::Critic->import(
         	-profile  => $rcfile,
         	-severity => $TEST_CRITIC,
