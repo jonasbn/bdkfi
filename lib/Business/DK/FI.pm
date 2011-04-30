@@ -10,7 +10,7 @@ use Readonly;
 use base qw(Exporter);
 use English qw( -no_match_vars );
 
-$VERSION   = '0.01';
+$VERSION   = '0.02';
 @EXPORT_OK = qw(validate validateFI generate);
 
 use constant MODULUS_OPERAND => 10;
@@ -107,7 +107,7 @@ Business::DK::FI - validation of Danish FI numbers
 
 =head1 VERSION
 
-The documentation describes version 0.01
+The documentation describes version 0.02
 
 =head1 SYNOPSIS
 
@@ -224,13 +224,13 @@ or by sending mail to
 
 =head2 TEST COVERAGE
 
-    ---------------------------- ------ ------ ------ ------ ------ ------ ------
-    File                           stmt   bran   cond    sub    pod   time  total
-    ---------------------------- ------ ------ ------ ------ ------ ------ ------
-    blib/lib/Business/DK/FI.pm    100.0  100.0    n/a  100.0  100.0   35.1  100.0
-    ...b/Class/Business/DK/FI.pm  100.0  100.0   66.7  100.0  100.0   64.9   98.4
-    Total                         100.0  100.0   66.7  100.0  100.0  100.0   99.3
-    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+	---------------------------- ------ ------ ------ ------ ------ ------ ------
+	File                           stmt   bran   cond    sub    pod   time  total
+	---------------------------- ------ ------ ------ ------ ------ ------ ------
+	blib/lib/Business/DK/FI.pm    100.0  100.0    n/a  100.0  100.0   34.8  100.0
+	...b/Class/Business/DK/FI.pm   97.6   83.3    n/a  100.0  100.0   65.2   96.9
+	Total                          99.1   90.0    n/a  100.0  100.0  100.0   98.7
+	---------------------------- ------ ------ ------ ------ ------ ------ ------
 
 =head1 QUALITY AND CODING STANDARD
 
