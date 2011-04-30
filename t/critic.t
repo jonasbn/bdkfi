@@ -21,7 +21,7 @@ use constant BRUTAL => 1;
 our $VERSION = '1.03';
 
 if ( not $TEST_CRITIC ) {
-    my $msg = 'Perl::Critic test. Set $ENV{TEST_CRITIC} to enable: 1-5 for severity, above 5 for resource file';
+    my $msg = 'Perl::Critic test. Set $ENV{TEST_CRITIC} to enable: 1-5 for severity, above 5 for resource file severity';
     plan( skip_all => $msg );
 
 } else {
