@@ -83,18 +83,29 @@ sub _calculate_sum {
 sub generate {
     my ($number) = @ARG;
 
+    #number has to be a positive number between 1 and 99999999999999
     validate_pos( @ARG,
-        { type => SCALAR, regex => qr/^\d{1,$CONTROL_LENGTH}$/xsm },
+        {
+            type => SCALAR,
+            regex => qr/^\d+$/,
+            callbacks => {
+                'higher than 0' => sub { shift() >= 1 },
+                'lower than 99999999999999' => sub { shift() <= 99999999999999 },
+            },
+        },
     );
 
-    $number = sprintf '%0' . $CONTROL_LENGTH . 'd', $number;
+    #padding with zeroes up to our maximum length
+    my $pattern = '%0' . $CONTROL_LENGTH . 'd';
+    my $reformatted_number = sprintf $pattern, $number;
 
-    my $sum = _calculate_sum( $number, \@CONTROLCIFERS );
+    #this call takes care of the check of the product of the above statement
+    my $sum = _calculate_sum( $reformatted_number, \@CONTROLCIFERS );
     my $checksum = _calculate_checksum($sum);
 
-    $number = $number . $checksum;
+    my $finalized_number = $reformatted_number . $checksum;
 
-    return $number;
+    return $finalized_number;
 }
 
 1;
