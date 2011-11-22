@@ -84,13 +84,14 @@ sub generate {
     my ($number) = @ARG;
 
     #number has to be a positive number between 1 and 99999999999999
-    validate_pos( @ARG,
-        {
-            type => SCALAR,
-            regex => qr/^\d+$/,
+    validate_pos(
+        @ARG,
+        {   type      => SCALAR,
+            regex     => qr/^\d+$/,
             callbacks => {
                 'higher than 0' => sub { shift() >= 1 },
-                'lower than 99999999999999' => sub { shift() <= 99999999999999 },
+                'lower than 99999999999999' =>
+                    sub { shift() <= 99999999999999 },
             },
         },
     );
@@ -235,13 +236,13 @@ or by sending mail to
 
 =head2 TEST COVERAGE
 
-	---------------------------- ------ ------ ------ ------ ------ ------ ------
-	File                           stmt   bran   cond    sub    pod   time  total
-	---------------------------- ------ ------ ------ ------ ------ ------ ------
-	blib/lib/Business/DK/FI.pm    100.0  100.0    n/a  100.0  100.0   34.8  100.0
-	...b/Class/Business/DK/FI.pm   97.6   83.3    n/a  100.0  100.0   65.2   96.9
-	Total                          99.1   90.0    n/a  100.0  100.0  100.0   98.7
-	---------------------------- ------ ------ ------ ------ ------ ------ ------
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    File                           stmt   bran   cond    sub    pod   time  total
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    blib/lib/Business/DK/FI.pm    100.0  100.0    n/a  100.0  100.0   34.8  100.0
+    ...b/Class/Business/DK/FI.pm   97.6   83.3    n/a  100.0  100.0   65.2   96.9
+    Total                          99.1   90.0    n/a  100.0  100.0  100.0   98.7
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
 =head1 QUALITY AND CODING STANDARD
 
