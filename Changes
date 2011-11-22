@@ -5,6 +5,14 @@ $Id$
 Project change log:
 http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
+Release 0.03, 23.11.2011
+
+- Attempt at addressing failing tests, reported by CPAN testers. I have not been
+  able to replicate the errors locally, but I have implemented a new strategy for
+  addressing the same problem [BDK-17]
+  http://logicLAB.jira.com/browse/BDKFI-17
+  
+
 Release 0.02, 30.04.2011
 
 - Addressed some issues with Perl::Critic tests, introducing dependency on Try::Tiny
