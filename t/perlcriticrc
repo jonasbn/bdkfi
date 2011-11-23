@@ -31,3 +31,11 @@ allow_leading_tabs = 0
 [-Variables::ProhibitPunctuationVars]
 
 [-Documentation::RequirePodLinksIncludeText]
+
+[-ValuesAndExpressions::RequireNumberSeparators]
+
+[-RegularExpressions::RequireDotMatchAnything]
+
+[-RegularExpressions::RequireExtendedFormatting]
+
+[-RegularExpressions::RequireLineBoundaryMatching]
