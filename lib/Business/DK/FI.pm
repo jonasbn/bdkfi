@@ -83,18 +83,30 @@ sub _calculate_sum {
 sub generate {
     my ($number) = @ARG;
 
-    validate_pos( @ARG,
-        { type => SCALAR, regex => qr/^\d{1,$CONTROL_LENGTH}$/xsm },
+    #number has to be a positive number between 1 and 99999999999999
+    validate_pos(
+        @ARG,
+        {   type      => SCALAR,
+            regex     => qr/^\d+$/,
+            callbacks => {
+                'higher than 0' => sub { shift() >= 1 },
+                'lower than 99999999999999' =>
+                    sub { shift() <= 99999999999999 },
+            },
+        },
     );
 
-    $number = sprintf '%0' . $CONTROL_LENGTH . 'd', $number;
+    #padding with zeroes up to our maximum length
+    my $pattern = '%0' . $CONTROL_LENGTH . 'd';
+    my $reformatted_number = sprintf $pattern, $number;
 
-    my $sum = _calculate_sum( $number, \@CONTROLCIFERS );
+    #this call takes care of the check of the product of the above statement
+    my $sum = _calculate_sum( $reformatted_number, \@CONTROLCIFERS );
     my $checksum = _calculate_checksum($sum);
 
-    $number = $number . $checksum;
+    my $finalized_number = $reformatted_number . $checksum;
 
-    return $number;
+    return $finalized_number;
 }
 
 1;
@@ -224,13 +236,13 @@ or by sending mail to
 
 =head2 TEST COVERAGE
 
-	---------------------------- ------ ------ ------ ------ ------ ------ ------
-	File                           stmt   bran   cond    sub    pod   time  total
-	---------------------------- ------ ------ ------ ------ ------ ------ ------
-	blib/lib/Business/DK/FI.pm    100.0  100.0    n/a  100.0  100.0   34.8  100.0
-	...b/Class/Business/DK/FI.pm   97.6   83.3    n/a  100.0  100.0   65.2   96.9
-	Total                          99.1   90.0    n/a  100.0  100.0  100.0   98.7
-	---------------------------- ------ ------ ------ ------ ------ ------ ------
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    File                           stmt   bran   cond    sub    pod   time  total
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    blib/lib/Business/DK/FI.pm    100.0  100.0    n/a  100.0  100.0   34.8  100.0
+    ...b/Class/Business/DK/FI.pm   97.6   83.3    n/a  100.0  100.0   65.2   96.9
+    Total                          99.1   90.0    n/a  100.0  100.0  100.0   98.7
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
 =head1 QUALITY AND CODING STANDARD
 
