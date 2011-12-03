@@ -5,7 +5,16 @@ $Id$
 Project change log:
 http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
-Release 0.03, 23.11.2011
+Release 0.04, 2011.12.03
+
+- Bug fix release re-addressing previous attempts at fixing bug (see 0.03). The issue seemed to be one of 
+  architecture and where I have only developed on 64-bit enabled platforms using 64-bit enabled perl I could
+  not replicate the issue, which was related to Perl's sprintf on 32-bit perl. I now use string indications (s)
+  instead of signed integer (d) and it seems to work.
+  http://logicLAB.jira.com/browse/BDKFI-20
+
+
+Release 0.03, 2011.11.23
 
 - Attempt at addressing failing tests, reported by CPAN testers. I have not been
   able to replicate the errors locally, but I have implemented a new strategy for
@@ -13,7 +22,7 @@ Release 0.03, 23.11.2011
   http://logicLAB.jira.com/browse/BDKFI-17
   
 
-Release 0.02, 30.04.2011
+Release 0.02, 2011.04.30
 
 - Addressed some issues with Perl::Critic tests, introducing dependency on Try::Tiny
 
@@ -22,6 +31,6 @@ Release 0.02, 30.04.2011
   http://logicLAB.jira.com/browse/BDKFI-16
 
 
-Release 0.01, 22.04.2011
+Release 0.01, 2011.04.22
 
 - Initial release
