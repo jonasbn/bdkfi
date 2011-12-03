@@ -97,7 +97,7 @@ sub generate {
     );
 
     #padding with zeroes up to our maximum length
-    my $pattern = '%0' . $CONTROL_LENGTH . 'd';
+    my $pattern = '%0' . $CONTROL_LENGTH . 's';
     my $reformatted_number = sprintf $pattern, $number;
 
     #this call takes care of the check of the product of the above statement
