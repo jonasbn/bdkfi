@@ -1,11 +1,22 @@
-Changes file for Business-DK-FI
+Changes file for Business::DK::FI
 
 $Id$
 
 Project change log:
 http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
-Release 0.04, 2011.12.03
+HEAD
+
+- Fixed up Changes file as part of my Questhub quest adhering to the standard
+  described in: CPAN::Changes::Spec [BDKFI-21]
+
+  Quest: http://questhub.io/realm/perl/quest/51f0fd8e18ba7dcf4b000040
+  Spec: https://metacpan.org/module/CPAN::Changes::Spec
+  
+  https://logiclab.jira.com/browse/BDKFI-21
+  
+
+0.04 2011-12-03
 
 - Bug fix release re-addressing previous attempts at fixing bug (see 0.03). The issue seemed to be one of 
   architecture and where I have only developed on 64-bit enabled platforms using 64-bit enabled perl I could
@@ -14,7 +25,7 @@ Release 0.04, 2011.12.03
   http://logicLAB.jira.com/browse/BDKFI-20
 
 
-Release 0.03, 2011.11.23
+0.03 2011-11-23
 
 - Attempt at addressing failing tests, reported by CPAN testers. I have not been
   able to replicate the errors locally, but I have implemented a new strategy for
@@ -22,7 +33,7 @@ Release 0.03, 2011.11.23
   http://logicLAB.jira.com/browse/BDKFI-17
   
 
-Release 0.02, 2011.04.30
+0.02 2011-04-30
 
 - Addressed some issues with Perl::Critic tests, introducing dependency on Try::Tiny
 
@@ -31,6 +42,6 @@ Release 0.02, 2011.04.30
   http://logicLAB.jira.com/browse/BDKFI-16
 
 
-Release 0.01, 2011.04.22
+0.01 2011-04-22
 
 - Initial release
