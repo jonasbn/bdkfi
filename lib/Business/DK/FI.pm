@@ -10,7 +10,7 @@ use Readonly;
 use base qw(Exporter);
 use English qw( -no_match_vars );
 
-$VERSION   = '0.04';
+$VERSION   = '0.05';
 @EXPORT_OK = qw(validate validateFI generate);
 
 use constant MODULUS_OPERAND => 10;
