@@ -19,8 +19,8 @@ use constant DEDUCTION       => 9;
 use constant INVALID         => 0;
 use constant VALID           => 1;
 
-Readonly my @CONTROLCIFERS  => qw(1 2 1 2 1 2 1 2 1 2 1 2 1 2);
-Readonly my $CONTROL_LENGTH => scalar @CONTROLCIFERS;
+Readonly::Array my @CONTROLCIFERS  => qw(1 2 1 2 1 2 1 2 1 2 1 2 1 2);
+Readonly::Scalar my $CONTROL_LENGTH => scalar @CONTROLCIFERS;
 
 ## no critic (NamingConventions::Capitalization)
 
