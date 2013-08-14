@@ -5,6 +5,13 @@ $Id$
 Project change log:
 http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
+HEAD
+
+- Added changes.t automatic assertion of the integrity of the Changes file, see also BDKFI-23
+
+  https://logiclab.jira.com/browse/BDKFI-23
+
+
 0.06 2013-07-31
 
 - Bug fix release, update only necessary if you are using an older Perl
