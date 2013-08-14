@@ -40,10 +40,12 @@ HEAD
 
 - Bug fix release, update recommended for users of 32-bit perl
 
-- Bug fix release re-addressing previous attempts at fixing bug (see 0.03). The issue seemed to be one of 
-  architecture and where I have only developed on 64-bit enabled platforms using 64-bit enabled perl I could
-  not replicate the issue, which was related to Perl's sprintf on 32-bit perl. I now use string indications (s)
-  instead of signed integer (d) and it seems to work.
+- Bug fix release re-addressing previous attempts at fixing bug (see 0.03). The issue seemed 
+  to be one of architecture and where I have only developed on 64-bit enabled platforms using 
+  64-bit enabled perl I could not replicate the issue, which was related to Perl's sprintf on 
+  32-bit perl. I now use string indications (s) instead of signed integer (d) and it seems to 
+  work.
+  
   http://logicLAB.jira.com/browse/BDKFI-20
 
 
