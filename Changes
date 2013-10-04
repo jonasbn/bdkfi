@@ -7,7 +7,7 @@ http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.syste
 
 HEAD
 
-- Added changes.t automatic assertion of the integrity of the Changes file, see also BDKFI-23
+- Added changes.t automatic assertion of the integrity of the Changes file, see also BDKFI-22
 
   https://logiclab.jira.com/browse/BDKFI-23
 
