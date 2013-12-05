@@ -28,7 +28,7 @@ my $build = Module::Build->new(
             homepage => 'http://logiclab.jira.com/wiki/display/BDKFI/Home',
             bugtracker =>
                 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-FI',
-            repository => 'http://logicLAB.jira.com/svn/BDKFI',
+            repository => 'https://github.com/jonasbn/bdkfi',
             ProjectChangelog => 'http://logiclab.jira.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel',
             ProjectSite => 'http://logicLAB.jira.com/browse/BDKFI',
             ProjectWiki => 'http://logiclab.jira.com/wiki/display/BDKFI/Home',
