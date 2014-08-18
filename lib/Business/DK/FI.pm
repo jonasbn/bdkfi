@@ -1,7 +1,5 @@
 package Business::DK::FI;
 
-# $Id$
-
 use strict;
 use warnings;
 use vars qw($VERSION @EXPORT_OK);
