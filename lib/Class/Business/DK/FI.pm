@@ -11,7 +11,7 @@ use Try::Tiny;
 
 use Business::DK::FI qw(validateFI);
 
-our $VERSION = '0.01';
+our $VERSION = '0.06';
 
 private number => my %number;    # read-only accessor: number()
 
