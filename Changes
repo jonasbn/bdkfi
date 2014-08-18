@@ -5,6 +5,8 @@ http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.syste
 
 HEAD
 
+- Specified Perl version requirement
+
 - Aligned version in package/modules files in lib in the distribution
 
 - Added changes.t automatic assertion of the integrity of the Changes file, see also BDKFI-22

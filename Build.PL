@@ -19,6 +19,7 @@ my $build = Module::Build->new(
         'Params::Validate' => '0',
         'Readonly'         => '0',
         'Try::Tiny'        => '0',
+        'perl'             => '5.005.03',
     },
     build_requires => {
         'Test::Exception'    => '0',
