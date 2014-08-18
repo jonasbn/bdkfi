@@ -5,6 +5,8 @@ http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.syste
 
 HEAD
 
+- Updated license to be Artistic 2.0
+
 - Specified Perl version requirement
 
 - Aligned version in package/modules files in lib in the distribution

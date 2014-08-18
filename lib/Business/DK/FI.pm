@@ -302,14 +302,12 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-FI and related is (C) by Jonas B. Nielsen, (jonasbn) 2009-2011
+Business-DK-FI and related is (C) by Jonas B. Nielsen, (jonasbn) 2009-2014
 
 =head1 LICENSE
 
-Business-DK-FI and related is released under the artistic license
+Business-DK-FI and related is released under the Artistic License 2.0
 
-The distribution is licensed under the Artistic License, as specified
-by the Artistic file in the standard perl distribution
-(http://dev.perl.org/licenses/artistic.html).
+See the included license file for details
 
 =cut
