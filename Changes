@@ -3,7 +3,7 @@ Changes file for Business::DK::FI
 Project change log:
 http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
-HEAD
+0.07 2014-08-18, maintenance release, update not required
 
 - Updated license to be Artistic 2.0
 
@@ -21,7 +21,7 @@ HEAD
 - Bug fix release, update only necessary if you are using an older Perl
   demonstrating this particular problem
 
-- Qualifying use of ReadOnly more explicitly in an attempt to address report
+- Qualifying use of Readonly more explicitly in an attempt to address report
   on failing test described in BDKFI-22
 
   https://logiclab.jira.com/browse/BDKFI-22
