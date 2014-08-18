@@ -6,14 +6,14 @@ VERSION
 
 SYNOPSIS
         use Business::DK::FI qw(validate validateFI generate);
-    
+
         if (validate('026840149965328')) {
             print "026840149965328 is valid\n";
         }
-    
-    
+
+
         my $fi_number = generate(1);
-    
+
         if ($fi_number eq '000000000000018') {
             print "we have a FI number\n";
         }
@@ -150,12 +150,10 @@ AUTHOR
 
 COPYRIGHT
     Business-DK-FI and related is (C) by Jonas B. Nielsen, (jonasbn)
-    2009-2011
+    2009-2014
 
 LICENSE
-    Business-DK-FI and related is released under the artistic license
+    Business-DK-FI and related is released under the Artistic License 2.0
 
-    The distribution is licensed under the Artistic License, as specified by
-    the Artistic file in the standard perl distribution
-    (http://dev.perl.org/licenses/artistic.html).
+    See the included license file for details
 
