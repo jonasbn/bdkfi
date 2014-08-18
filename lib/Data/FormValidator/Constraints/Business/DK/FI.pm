@@ -14,7 +14,7 @@ use base 'Exporter';
 use constant VALID   => 1;
 use constant INVALID => undef;
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 sub valid_fi {
     return sub {
@@ -253,7 +253,7 @@ Please see the distribution F<TODO> file also and the distribution road map at:
 =item * L<Business::DK::Phonenumber>
 
 =back
-  
+
 =head1 AUTHOR
 
 Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>

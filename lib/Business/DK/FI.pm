@@ -9,7 +9,7 @@ use base qw(Exporter);
 use English qw( -no_match_vars );
 use 5.005.03; 
 
-$VERSION   = '0.06';
+$VERSION   = '0.07';
 @EXPORT_OK = qw(validate validateFI generate);
 
 use constant MODULUS_OPERAND => 10;
@@ -123,18 +123,18 @@ The documentation describes version 0.02
 =head1 SYNOPSIS
 
     use Business::DK::FI qw(validate validateFI generate);
-    
+
     if (validate('026840149965328')) {
         print "026840149965328 is valid\n";
     }
-    
-    
+
+
     my $fi_number = generate(1);
-    
+
     if ($fi_number eq '000000000000018') {
         print "we have a FI number\n";
     }
-    
+
 
 =head1 DESCRIPTION
 

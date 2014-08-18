@@ -9,7 +9,7 @@ use Try::Tiny;
 
 use Business::DK::FI qw(validateFI);
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 private number => my %number;    # read-only accessor: number()
 
@@ -79,22 +79,22 @@ The documentation describes version 0.01
 =head1 SYNOPSIS
 
     use Class::Business::DK::FI;
-    
+
     my $FI = Class::Business::DK::FI->new('026840149965328');
-    
-    
+
+
     #accessors
     my $fi_number = $FI->number();
-    
+
     my $fi_number = $FI->get_number();
 
     #mutators
     my $fi_number = $FI->number('026840149965328')
         or die "Unable to set number\n";
-    
+
     my $fi_number = $FI->get_number('026840149965328')
         or die "Unable to set number\n";
-    
+
 =head1 DESCRIPTION
 
 This is an OOP implementation for handling FI numbers. The class gives you an FI number object, which is validated according to the FI specification, see: L<Business::DK::FI>.
