@@ -1,0 +1,155 @@
+[![CPAN version](https://badge.fury.io/pl/Business-DK-FI.svg)](http://badge.fury.io/pl/Business-DK-FI)
+[![Build Status](https://travis-ci.org/jonasbn/bdkfi.svg?branch=master)](https://travis-ci.org/jonasbn/bdkfi)
+[![Coverage Status](https://coveralls.io/repos/jonasbn/bdkfi/badge.png)](https://coveralls.io/r/jonasbn/bdkfi)
+
+# NAME
+
+Business::DK::FI - validation of Danish FI numbers
+
+# VERSION
+
+The documentation describes version 0.02
+
+# SYNOPSIS
+
+    use Business::DK::FI qw(validate validateFI generate);
+
+    if (validate('026840149965328')) {
+        print "026840149965328 is valid\n";
+    }
+
+
+    my $fi_number = generate(1);
+
+    if ($fi_number eq '000000000000018') {
+        print "we have a FI number\n";
+    }
+
+# DESCRIPTION
+
+FI numbers are numbers used on GIRO payment forms. These can be used to do
+online payments in banks or at in physical banks or post offices.
+
+The module currently only supports FI numbers in the following series:
+
+- 71
+- 75
+
+# SUBROUTINES AND METHODS
+
+## validate
+
+Takes a single argument. 15 digit FI number. Returns true (1) or false (0)
+indicating whether the provided parameter adheres to specification.
+
+## validateFI
+
+Less intrusive exported variation of ["validate"](#validate). It is actually ["validate"](#validate)
+which is wrapping ["validateFI"](#validatefi).
+
+## generate
+
+Simple FI generation method. Takes an arbitrary number adhering to the following requirements: 
+
+- length between 1 and 14
+- value between 1 and 99999999999999
+
+Returns a valid FI number.
+
+## PRIVATE SUBROUTINES AND METHODS
+
+## \_calculate\_checksum
+
+This method calculates a checksum, it takes a single number as parameter and returns the calculated checksum.
+
+## \_calculate\_sum
+
+This method calculates a sum it takes a number and a reference to an array of control cifers. It calculates a single sum based on the number and the control cifer and returns this.
+
+# DIAGNOSTICS
+
+All methods __die__ if their API is not respected. Method calls can with success be wrapped in [Try::Tiny](https://metacpan.org/pod/Try::Tiny) or `eval` blocks.
+
+# CONFIGURATION AND ENVIRONMENT
+
+The module requires no special configuration or environment.
+
+# DEPENDENCIES
+
+- [Params::Validate](https://metacpan.org/pod/Params::Validate)
+- [Readonly](https://metacpan.org/pod/Readonly)
+- [Exporter](https://metacpan.org/pod/Exporter)
+- [English](https://metacpan.org/pod/English)
+
+# BUGS AND LIMITATIONS
+
+This module has no known bugs or limitations.
+
+# BUG REPORTING
+
+Please report issues via CPAN RT:
+
+- [http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-FI](http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-FI)
+
+or by sending mail to
+
+- `<bug-Business-DK-FI@rt.cpan.org>`
+
+# TEST AND QUALITY
+
+## TEST COVERAGE
+
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    File                           stmt   bran   cond    sub    pod   time  total
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    blib/lib/Business/DK/FI.pm    100.0  100.0    n/a  100.0  100.0   34.8  100.0
+    ...b/Class/Business/DK/FI.pm   97.6   83.3    n/a  100.0  100.0   65.2   96.9
+    Total                          99.1   90.0    n/a  100.0  100.0  100.0   98.7
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+
+# QUALITY AND CODING STANDARD
+
+The code passes [Perl::Critic](https://metacpan.org/pod/Perl::Critic) tests at severity 1 (_brutal_) with a set of policies disabled. please see `t/perlcriticrc` and the list below:
+
+- [Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma](https://metacpan.org/pod/Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma), please
+see: [http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma](http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma)
+- [Perl::Critic::Policy::Documentation::RequirePodLinksIncludeText](https://metacpan.org/pod/Perl::Critic::Policy::Documentation::RequirePodLinksIncludeText), this
+is listed in the ["TODO"](#todo) it requires numerous changes to the distribution POD.
+- [Perl::Critic::Policy::NamingConventions::Capitalization](https://metacpan.org/pod/Perl::Critic::Policy::NamingConventions::Capitalization), ["validateFI"](#validatefi) is exported both as ["validateFI"](#validatefi) and ["validate"](#validate) and __FI__ is our used acronym
+so we try to stick to this
+- [Perl::Critic::Policy::ControlStructures::ProhibitCStyleForLoops](https://metacpan.org/pod/Perl::Critic::Policy::ControlStructures::ProhibitCStyleForLoops), this
+is for the main algorithm, it was easier to do with a __C-style for loop__
+- [Perl::Critic::Policy::Subroutines::RequireArgUnpacking](https://metacpan.org/pod/Perl::Critic::Policy::Subroutines::RequireArgUnpacking), this is due to
+the way: [Params::Validate](https://metacpan.org/pod/Params::Validate) is used
+- [Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers](https://metacpan.org/pod/Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers), we
+use long control numbers
+- [Perl::Critic:.:Policy::Variables::ProhibitPunctuationVars](https://metacpan.org/pod/Perl::Critic:.:Policy::Variables::ProhibitPunctuationVars)
+
+# TODO
+
+Please see the distribution `TODO` file also and the distribution road map at:
+    [http://logiclab.jira.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel](http://logiclab.jira.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel)
+
+# SEE ALSO
+
+- http://www.pbs.dk/
+- [Try::Tiny](https://metacpan.org/pod/Try::Tiny)
+- [Business::DK::CVR](https://metacpan.org/pod/Business::DK::CVR)
+- [Business::DK::CPR](https://metacpan.org/pod/Business::DK::CPR)
+- [Business::DK::PO](https://metacpan.org/pod/Business::DK::PO)
+- [Business::DK::Postalcode](https://metacpan.org/pod/Business::DK::Postalcode)
+- [Business::DK::Phonenumber](https://metacpan.org/pod/Business::DK::Phonenumber)
+
+# AUTHOR
+
+Jonas B. Nielsen, (jonasbn) - `<jonasbn@cpan.org>`
+
+# COPYRIGHT
+
+Business-DK-FI and related is (C) by Jonas B. Nielsen, (jonasbn) 2009-2014
+
+# LICENSE
+
+Business-DK-FI and related is released under the Artistic License 2.0
+
+See the included license file for details
