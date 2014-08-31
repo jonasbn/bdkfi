@@ -112,9 +112,11 @@ sub generate {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-Business::DK::FI - validation of Danish FI numbers
+Business::DK::FI - Danish FI number validator
 
 =head1 VERSION
 
