@@ -1,10 +1,6 @@
-[![CPAN version](https://badge.fury.io/pl/Business-DK-FI.svg)](http://badge.fury.io/pl/Business-DK-FI)
-[![Build Status](https://travis-ci.org/jonasbn/bdkfi.svg?branch=master)](https://travis-ci.org/jonasbn/bdkfi)
-[![Coverage Status](https://coveralls.io/repos/jonasbn/bdkfi/badge.png)](https://coveralls.io/r/jonasbn/bdkfi)
-
 # NAME
 
-Business::DK::FI - validation of Danish FI numbers
+Business::DK::FI - Danish FI number validator
 
 # VERSION
 
@@ -68,7 +64,7 @@ This method calculates a sum it takes a number and a reference to an array of co
 
 # DIAGNOSTICS
 
-All methods __die__ if their API is not respected. Method calls can with success be wrapped in [Try::Tiny](https://metacpan.org/pod/Try::Tiny) or `eval` blocks.
+All methods **die** if their API is not respected. Method calls can with success be wrapped in [Try::Tiny](https://metacpan.org/pod/Try::Tiny) or `eval` blocks.
 
 # CONFIGURATION AND ENVIRONMENT
 
@@ -115,10 +111,10 @@ The code passes [Perl::Critic](https://metacpan.org/pod/Perl::Critic) tests at s
 see: [http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma](http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma)
 - [Perl::Critic::Policy::Documentation::RequirePodLinksIncludeText](https://metacpan.org/pod/Perl::Critic::Policy::Documentation::RequirePodLinksIncludeText), this
 is listed in the ["TODO"](#todo) it requires numerous changes to the distribution POD.
-- [Perl::Critic::Policy::NamingConventions::Capitalization](https://metacpan.org/pod/Perl::Critic::Policy::NamingConventions::Capitalization), ["validateFI"](#validatefi) is exported both as ["validateFI"](#validatefi) and ["validate"](#validate) and __FI__ is our used acronym
+- [Perl::Critic::Policy::NamingConventions::Capitalization](https://metacpan.org/pod/Perl::Critic::Policy::NamingConventions::Capitalization), ["validateFI"](#validatefi) is exported both as ["validateFI"](#validatefi) and ["validate"](#validate) and **FI** is our used acronym
 so we try to stick to this
 - [Perl::Critic::Policy::ControlStructures::ProhibitCStyleForLoops](https://metacpan.org/pod/Perl::Critic::Policy::ControlStructures::ProhibitCStyleForLoops), this
-is for the main algorithm, it was easier to do with a __C-style for loop__
+is for the main algorithm, it was easier to do with a **C-style for loop**
 - [Perl::Critic::Policy::Subroutines::RequireArgUnpacking](https://metacpan.org/pod/Perl::Critic::Policy::Subroutines::RequireArgUnpacking), this is due to
 the way: [Params::Validate](https://metacpan.org/pod/Params::Validate) is used
 - [Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers](https://metacpan.org/pod/Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers), we
