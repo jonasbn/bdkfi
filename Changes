@@ -3,7 +3,7 @@ Changes file for Business::DK::FI
 Project change log:
 http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
-0.07 2014-08-18, maintenance release, update not required
+0.07 2014-08-18 Maintenance release, update not required
 
 - Updated license to be Artistic 2.0
 
@@ -18,7 +18,7 @@ http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.syste
   https://logiclab.jira.com/browse/BDKFI-23
 
 
-0.06 2013-07-31, bug fix release, update recommended (see below)
+0.06 2013-07-31 Bug fix release, update recommended see below
 
 - Update only necessary if you are using an older Perl
   demonstrating this particular problem
@@ -29,7 +29,7 @@ http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.syste
   https://logiclab.jira.com/browse/BDKFI-22
 
 
-0.05 2013-07-29, maintenance release, update not required
+0.05 2013-07-29 Maintenance release, update not required see below
 
 - Fixed up Changes file as part of my Questhub quest adhering to
   the standard described in: CPAN::Changes::Spec [BDKFI-21]
@@ -41,7 +41,7 @@ http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.syste
   https://logiclab.jira.com/browse/BDKFI-21
 
 
-0.04 2011-12-03, bug fix release, update recommended (see below)
+0.04 2011-12-03 Bug fix release, update recommended
 
 - Update recommended for users of 32-bit perl
 
@@ -56,7 +56,7 @@ http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.syste
   http://logicLAB.jira.com/browse/BDKFI-20
 
 
-0.03 2011-11-23
+0.03 2011-11-23 Bug fix release, update recommended see below
 
 - Bug fix release, update only necessary if you are using an
   older Perl demonstrating this particular problem
@@ -69,7 +69,7 @@ http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.syste
   http://logicLAB.jira.com/browse/BDKFI-17
 
 
-0.02 2011-04-30, maintenance release, update not required
+0.02 2011-04-30 Maintenance release, update not required
 
 - Addressed some issues with Perl::Critic tests, introducing
   dependency on Try::Tiny
