@@ -4,7 +4,7 @@ Business::DK::FI - Danish FI number validator
 
 # VERSION
 
-The documentation describes version 0.02
+The documentation describes version 0.08
 
 # SYNOPSIS
 
