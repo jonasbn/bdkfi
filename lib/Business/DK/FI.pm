@@ -9,7 +9,7 @@ use base qw(Exporter);
 use English qw( -no_match_vars );
 use 5.005.03; 
 
-$VERSION   = '0.07';
+$VERSION   = '0.08';
 @EXPORT_OK = qw(validate validateFI generate);
 
 use constant MODULUS_OPERAND => 10;
@@ -120,7 +120,7 @@ Business::DK::FI - Danish FI number validator
 
 =head1 VERSION
 
-The documentation describes version 0.02
+The documentation describes version 0.08
 
 =head1 SYNOPSIS
 

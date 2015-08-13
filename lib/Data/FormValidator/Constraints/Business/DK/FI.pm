@@ -14,7 +14,7 @@ use base 'Exporter';
 use constant VALID   => 1;
 use constant INVALID => undef;
 
-$VERSION = '0.07';
+$VERSION = '0.08';
 
 sub valid_fi {
     return sub {
@@ -63,7 +63,7 @@ Data::FormValidator::Constraints::Business::DK::FI - constraint for Danish FI
 
 =head1 VERSION
 
-The documentation describes version 0.01 of Data::FormValidator::Constraints::Business::DK::FI
+The documentation describes version 0.08 of Data::FormValidator::Constraints::Business::DK::FI
 
 =head1 SYNOPSIS
 
