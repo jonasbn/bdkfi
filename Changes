@@ -1,7 +1,10 @@
 Changes file for Business::DK::FI
 
-Project change log:
-http://logiclab.jia.com/browse/BDKFI#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
+0.09 2016-12-11 Maintenance release, update not required
+
+- Addressed some Kwalitee issue and specified use of Scalar::Util explicitly
+- Bumped Perl version requirement to 5.6.0
+
 
 0.08 2015-08-13 Maintenance release, update not required
 

@@ -9,7 +9,7 @@ use Try::Tiny;
 
 use Business::DK::FI qw(validateFI);
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 private number => my %number;    # read-only accessor: number()
 
@@ -76,7 +76,7 @@ Class::Business::DK::FI - class for Danish FI numbers
 
 =head1 VERSION
 
-The documentation describes version 0.08
+The documentation describes version 0.09
 
 =head1 SYNOPSIS
 
@@ -234,7 +234,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-FI and related is (C) by Jonas B. Nielsen, (jonasbn) 2009-2014
+Business-DK-FI and related is (C) by Jonas B. Nielsen, (jonasbn) 2009-2016
 
 =head1 LICENSE
 
