@@ -1,6 +1,4 @@
 
-# $Id$
-
 severity = 1
 
 verbose = 8
@@ -9,9 +7,6 @@ verbose = 8
 
 #REF: http://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-CodeLayout-RequireTidyCode
 [CodeLayout::RequireTidyCode]
-
-[Miscellanea::RequireRcsKeywords]
-keywords = Id
 
 [Documentation::RequirePodSections]
 lib_sections    = NAME|SYNOPSIS|VERSION|DESCRIPTION|SUBROUTINES AND METHODS|DIAGNOSTICS|CONFIGURATION AND ENVIRONMENT|DEPENDENCIES|TEST AND QUALITY|QUALITY AND CODING STANDARD|BUGS AND LIMITATIONS|BUG REPORTING|TODO|SEE ALSO|AUTHOR|COPYRIGHT|LICENSE
