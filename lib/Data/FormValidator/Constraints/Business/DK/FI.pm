@@ -32,7 +32,8 @@ sub valid_fi {
 
         if ( validateFI($fi) ) {
             return VALID;
-        } else {
+        }
+        else {
             return INVALID;
         }
         }

@@ -25,7 +25,8 @@ sub new {
 
     if ($number) {
         $self->set_number($number);
-    } else {
+    }
+    else {
         croak 'You must provide a FI number';
     }
 
@@ -59,7 +60,8 @@ sub set_number {
 
         return $rv;
 
-    } else {
+    }
+    else {
         croak 'You must provide a FI number';
     }
 }

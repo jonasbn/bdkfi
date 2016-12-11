@@ -18,7 +18,7 @@ use constant DEDUCTION       => 9;
 use constant INVALID         => 0;
 use constant VALID           => 1;
 
-Readonly::Array my @CONTROLCIFERS  => qw(1 2 1 2 1 2 1 2 1 2 1 2 1 2);
+Readonly::Array my @CONTROLCIFERS   => qw(1 2 1 2 1 2 1 2 1 2 1 2 1 2);
 Readonly::Scalar my $CONTROL_LENGTH => scalar @CONTROLCIFERS;
 
 ## no critic (NamingConventions::Capitalization)
@@ -41,7 +41,8 @@ sub validate {
 
     if ( $checksum == $last_digit ) {
         return VALID;
-    } else {
+    }
+    else {
         return INVALID;
     }
 }
@@ -72,7 +73,8 @@ sub _calculate_sum {
 
         if ( $tmp_sum >= THRESHOLD ) {
             $sum += ( $tmp_sum - DEDUCTION );
-        } else {
+        }
+        else {
             $sum += $tmp_sum;
         }
     }
