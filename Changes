@@ -1,5 +1,10 @@
 Changes file for Business::DK::FI
 
+0.10 2016-12-12 Maintenance release, update not required
+
+- Added test of META.json
+
+
 0.09 2016-12-11 Maintenance release, update not required
 
 - Addressed some Kwalitee issue and specified use of Scalar::Util explicitly
