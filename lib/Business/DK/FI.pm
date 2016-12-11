@@ -7,7 +7,7 @@ use Params::Validate qw(validate_pos SCALAR ARRAYREF);
 use Readonly;
 use base qw(Exporter);
 use English qw( -no_match_vars );
-use 5.005.03; 
+use 5.006;
 
 $VERSION   = '0.08';
 @EXPORT_OK = qw(validate validateFI generate);
