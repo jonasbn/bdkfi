@@ -4,7 +4,7 @@ Business::DK::FI - Danish FI number validator
 
 # VERSION
 
-The documentation describes version 0.08
+The documentation describes version 0.09
 
 # SYNOPSIS
 
@@ -142,7 +142,7 @@ Jonas B. Nielsen, (jonasbn) - `<jonasbn@cpan.org>`
 
 # COPYRIGHT
 
-Business-DK-FI and related is (C) by Jonas B. Nielsen, (jonasbn) 2009-2014
+Business-DK-FI and related is (C) by Jonas B. Nielsen, (jonasbn) 2009-2016
 
 # LICENSE
 
